@@ -23,8 +23,8 @@ def registar_país_outro_índice(lista,índice, nome_do_país):
     return lista
 
 def verificar_número_de_elementos(lista):
-    lista.get_count()
-    return lista    
+    return lista.get_count()
+     
 
 def verificar_se_país_encontra_lista(lista, nome_do_país):
     lista.search_item(nome_do_país)

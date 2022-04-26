@@ -1,3 +1,4 @@
+from configparser import ParsingError
 import controller.controller as cl
 from models.LinkedList import LinkedList
 def main ():
@@ -19,17 +20,17 @@ def main ():
         if comando[0] == "RPDE":
             nome_do_país = comando[1]
             país_registrado = comando[2]
-            registar_depois_outro_elemento(lista, nome_do_país)  
+            registar_depois_outro_elemento(lista, país_registrado, nome_do_país)  
 
         if comando[0] == "RPAE":
             nome_do_país = comando[1]
             país_registrado = comando[2]
-            registar_antes_outro_elemento(lista, nome_do_país)  
+            registar_antes_outro_elemento(lista, país_registrado,nome_do_país)  
 
         if comando[0] == "RPII":
             nome_do_país = comando[1]
             índice = int(comando[2]) 
-            registar_país_outro_índice(lista, nome_do_país)  
+            registar_país_outro_índice(lista,índice, nome_do_país)  
     
         if comando[0] == "VNE":
             verificar_número_de_elementos(lista)   
@@ -70,21 +71,31 @@ def registar_país_outro_índice(lista,índice, nome_do_país):
     lista.traverse_list()       
 
 def verificar_número_de_elementos(lista):
-    cl.verificar_número_de_elementos(lista)
-    lista.traverse_list()       
+   c = cl.verificar_número_de_elementos(lista)
+   print(f"O numero de elementos são {c}")
+         
 
 def verificar_se_país_encontra_lista(lista, nome_do_país):
-    cl.verificar_se_país_encontra_lista(lista, nome_do_país)
-    lista.traverse_list()       
+    if cl.verificar_se_país_encontra_lista(lista, nome_do_país) == False:
+        print(f"O país {nome_do_país} não se encontra na lista")
+    else: 
+        print(f"O país {nome_do_país} encontra-se na lista")
+
+       
 
 def eliminar_primeiro_elemento(lista):
+    nome_do_país = lista.start_node.item
     cl.eliminar_primeiro_elemento(lista)
-    lista.traverse_list()       
+    print(f"O país{nome_do_país} foi eliminado da lista ")      
 
 def eliminar_último_elemento(lista):
+    nome_do_país = lista.end_node.item
     cl.eliminar_último_elemento(lista)
-    lista.traverse_list()   
+    print(f"O país {nome_do_país} foi eliminado da lista. ")  
 
 def eliminar_um_determinado_país_da_lista(lista, nome_do_país):
-    cl.eliminar_um_determinado_país_da_lista(lista, nome_do_país)
-    lista.traverse_list()          
+    if cl.verificar_se_país_encontra_lista(lista, nome_do_país) == False:
+        print(f"O país {nome_do_país} não se encontra na lista")
+    else:
+       cl.eliminar_um_determinado_país_da_lista(lista, nome_do_país)
+       print(f"O país {nome_do_país} foi eliminado com sucesso. ")         
