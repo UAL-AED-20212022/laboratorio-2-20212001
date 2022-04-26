@@ -1,4 +1,5 @@
-
+import controller.controller as cl
+from models.LinkedList import LinkedList
 def main ():
 
     lista = LinkedList()

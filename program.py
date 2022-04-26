@@ -1,5 +1,5 @@
-from views.view import main
+import views.view 
 
 if __name__ == "__main__":
-    main()
+    views.view.main()
 

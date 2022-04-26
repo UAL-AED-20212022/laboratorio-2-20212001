@@ -1,3 +1,4 @@
+from models.LinkedList import *
 
 def registar_país_início(lista, nome_do_país):
     lista.insert_at_start(nome_do_país)
